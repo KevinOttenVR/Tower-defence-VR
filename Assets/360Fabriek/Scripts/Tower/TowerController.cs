@@ -9,7 +9,7 @@ public class TowerController : MonoBehaviour
         int towerPrice = towerData.price;
 
         if (money <= towerPrice)
-        { 
+        {
             money -= towerPrice;
 
             Instantiate(towerData.towerPrefab);
@@ -20,7 +20,7 @@ public class TowerController : MonoBehaviour
     {
         // Check if the tower can be upgraded
         if (towerData.levels[currentLevel] == null)
-        { 
+        {
             return;
         }
 

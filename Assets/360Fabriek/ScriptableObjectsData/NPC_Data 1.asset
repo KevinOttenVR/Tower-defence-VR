@@ -19,5 +19,8 @@ MonoBehaviour:
   type: 0
   scale: {x: 0, y: 0, z: 0}
   weaponType: 0
-  spawnPoints: []
+  spawnPoints:
+  - spawnPoint: {fileID: 0}
+    weight: 1
+    minWave: 0
   levels: []

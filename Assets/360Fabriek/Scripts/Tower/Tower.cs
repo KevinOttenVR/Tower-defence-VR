@@ -17,10 +17,10 @@ public class Tower : MonoBehaviour
         attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
         range = Data.levels[currentLevel - 1].range;
 
-        Debug.Log($"Placed NPC: {Data.name} with the price of {Data.price} points");
+        Debug.Log($"Placed tower: {Data.name} with the price of {Data.price} points");
     }
 
-    [ContextMenu("Upgrade NPC")]
+    [ContextMenu("Upgrade Tower")]
     public void UpdateTowerStats()
     {
         int newHPDifference = Data.levels[currentLevel].maxHP - Data.levels[currentLevel -1].maxHP;
