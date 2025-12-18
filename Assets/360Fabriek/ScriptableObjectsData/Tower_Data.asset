@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89525f207e55c9043b44cd2a88b81792, type: 3}
+  m_Name: Tower_Data
+  m_EditorClassIdentifier: Assembly-CSharp::TowerData
+  towerPrefab: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  name: Harold
+  price: 150
+  scale: {x: 1, y: 1, z: 1}
+  weaponType: 1
+  levels:
+  - level: 1
+    upgradePrice: 200
+    destroyOrKillPrice: 50
+    maxHP: 1000
+    damage: 10
+    attackSpeed: 50
+    range: 5
+  - level: 2
+    upgradePrice: 500
+    destroyOrKillPrice: 125
+    maxHP: 1400
+    damage: 12
+    attackSpeed: 55
+    range: 6
