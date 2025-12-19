@@ -15,4 +15,15 @@ public class NPCController : MonoBehaviour
             Instantiate(NPCData.NPCPrefab);
         }
     }
+
+    void TakeDamage(int amount, GameObject npc)
+    {
+        NPC npcInstance = npc.GetComponent<NPC>();
+
+        npcInstance.TakeDamage(amount);
+        if (npcInstance.currentHP <= 0)
+        {
+            Destroy(npc);
+        }
+    }
 }
