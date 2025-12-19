@@ -11,4 +11,5 @@ public class LevelStats
     [Min(0)] public int damage;
     [Min(0f)] public float attackSpeed;
     [Min(0f)] public float range;
+    [Min(0f)] public float movementSpeed;
 }

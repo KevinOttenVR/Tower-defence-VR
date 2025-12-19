@@ -2,44 +2,59 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
-    int money = 0;
-
-    void PlaceTower(TowerData towerData)
-    {
-        int towerPrice = towerData.price;
-
-        if (money <= towerPrice)
-        {
-            money -= towerPrice;
-
-            Instantiate(towerData.towerPrefab);
-        }
-    }
-
-    void UpgradeTower(TowerData towerData, GameObject tower, int currentLevel)
-    {
-        // Check if the tower can be upgraded
-        if (towerData.levels[currentLevel] == null)
-        {
-            return;
-        }
-
-        // Check if the user has enough money to upgrade the tower
-        int upgradePrice = towerData.levels[currentLevel-1].upgradePrice;
-
-        if (money <= upgradePrice)
-        {
-            money -= upgradePrice;
-            tower.GetComponent<Tower>().UpdateTowerStats();
-        }
-    }
-
     void SellTower(TowerData towerData, GameObject tower, int currentLevel)
     {
         int sellPrice = towerData.levels[currentLevel - 1].destroyOrKillPrice;
 
         Destroy(tower);
-        money += sellPrice;
+        ScoreManager.score += sellPrice;
+    }
+
+    void TakeDamage(int amount, GameObject tower)
+    {
+        Tower towerInstance = tower.GetComponent<Tower>();
+        
+        towerInstance.TakeDamage(amount);
+        if(towerInstance.currentHP <= 0)
+        {
+            Destroy(tower);
+        }
+    }
+
+    public void PlaceTower(TowerData towerData, Vector3 position)
+    {
+        int towerPrice = towerData.price;
+
+        if (ScoreManager.score >= towerPrice)
+        {
+            ScoreManager.score -= towerPrice;
+            Instantiate(towerData.towerPrefab, position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("Not enough money to place!");
+        }
+    }
+
+    public void UpgradeTower(TowerData towerData, GameObject tower, int currentLevel)
+    {
+        if (currentLevel >= towerData.levels.Length)
+        {
+            Debug.Log("Tower at max level!");
+            return;
+        }
+
+        int upgradePrice = towerData.levels[currentLevel -1].upgradePrice;
+
+        if (ScoreManager.score >= upgradePrice)
+        {
+            ScoreManager.score -= upgradePrice;
+            tower.GetComponent<Tower>().UpdateTowerStats();
+        }
+        else
+        {
+            Debug.Log("Not enough money to upgrade!");
+        }
     }
 
     void TakeDamage(int amount, GameObject tower)

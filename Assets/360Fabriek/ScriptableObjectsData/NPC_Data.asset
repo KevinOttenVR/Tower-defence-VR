@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
   m_Name: NPC_Data
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  NPCPrefab: {fileID: 0}
+  NPCPrefab: {fileID: 771223339620564273, guid: 893cbd9b7c8c659408ebbc72e656eac1, type: 3}
   projectilePrefab: {fileID: 0}
   name: Robot1
   price: 500
@@ -20,21 +20,29 @@ MonoBehaviour:
   scale: {x: 1, y: 1, z: 1}
   weaponType: 0
   spawnPoints:
-  - spawnPoint: {fileID: 0}
+  - spawnPoint: {x: -21.06, y: 0.496, z: 0.3}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -21.06, y: 0.496, z: 7.25}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -21.06, y: 0.496, z: 13.48}
     weight: 4
     minWave: 7
   levels:
   - level: 1
     upgradePrice: 200
-    destroyOrKillPrice: 50
-    maxHP: 5000
+    destroyOrKillPrice: 100
+    maxHP: 100
     damage: 50
     attackSpeed: 5
     range: 3
-  - level: 2
+    movementSpeed: 5
+  - level: 3
     upgradePrice: 500
     destroyOrKillPrice: 100
-    maxHP: 6000
+    maxHP: 200
     damage: 80
     attackSpeed: 6
     range: 3
+    movementSpeed: 2

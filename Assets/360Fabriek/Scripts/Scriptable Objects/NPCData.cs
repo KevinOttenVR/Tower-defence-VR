@@ -27,7 +27,7 @@ public class NPCData : ScriptableObject
 [Serializable]
 public class TroopSpawnPointData
 {
-    public Transform spawnPoint;
+    public Vector3 spawnPoint;
 
     [Min(0f)]
     [Tooltip("The higher the weight, the higher the chance to use this spawn point")]
