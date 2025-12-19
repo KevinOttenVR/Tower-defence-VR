@@ -36,6 +36,8 @@ public class Tower : MonoBehaviour
         damage = Data.levels[currentLevel - 1].damage;
         attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
         range = Data.levels[currentLevel - 1].range;
+
+        StatsChanged?.Invoke(this);
     }
 
     public void TakeDamage(int amount)

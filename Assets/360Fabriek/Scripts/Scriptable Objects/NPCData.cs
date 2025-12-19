@@ -27,11 +27,11 @@ public class NPCData : ScriptableObject
 [Serializable]
 public class TroopSpawnPointData
 {
-    public Transform spawnPoint;
+    public Vector3 spawnPoint;
 
     [Min(0f)]
     [Tooltip("The higher the weight, the higher the chance to use this spawn point")]
-    public float weight = 1f;
+    public int weight = 1;
 
     [Min(0)]
     [Tooltip("The wave you have to reach before this spawnpoint can be used")]
@@ -40,7 +40,7 @@ public class TroopSpawnPointData
 
 [Serializable]
 public enum NPCType
-{ 
+{
     player,
     enemy
 }

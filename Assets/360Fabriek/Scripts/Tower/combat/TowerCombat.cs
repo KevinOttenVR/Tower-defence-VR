@@ -180,8 +180,9 @@ public class TowerCombat : MonoBehaviour
 
             currentTarget.TakeDamage(tower.damage);
 
-            float interval = tower.attackSpeed <= 0 ? 0.25f : (1f / tower.attackSpeed);
+            float interval = Mathf.Max(tower.attackSpeed, 0.01f);
             yield return new WaitForSeconds(interval);
+
 
             if (currentTarget != null && (currentTarget.IsDead || !nodeByNpc.ContainsKey(currentTarget)))
             {

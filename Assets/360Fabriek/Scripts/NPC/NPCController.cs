@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-    int money = 0;
-
     void PlaceNPC(NPCData NPCData)
     {
         int npcPrice = NPCData.price;
 
-        if (money <= npcPrice)
+        if (ScoreManager.score <= npcPrice)
         {
-            money -= npcPrice;
+            ScoreManager.score -= npcPrice;
 
             Instantiate(NPCData.NPCPrefab);
         }
