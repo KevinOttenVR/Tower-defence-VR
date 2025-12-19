@@ -41,4 +41,16 @@ public class TowerController : MonoBehaviour
         Destroy(tower);
         money += sellPrice;
     }
+
+    void TakeDamage(int amount, GameObject tower)
+    {
+        Tower towerInstance = tower.GetComponent<Tower>();
+        
+        towerInstance.TakeDamage(amount);
+        if(towerInstance.currentHP <= 0)
+        {
+            Destroy(tower);
+        }
+
+    }
 }

@@ -10,20 +10,25 @@ public class Tower : MonoBehaviour
     public float attackSpeed;
     public float range;
 
-    void Start()
+    public event System.Action<Tower> StatsChanged;
+    public event System.Action<Tower> OnDeath;
+
+    public bool IsDead => currentHP <= 0;
+
+    void Awake()
     {
         currentHP = Data.levels[currentLevel - 1].maxHP;
         damage = Data.levels[currentLevel - 1].damage;
         attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
         range = Data.levels[currentLevel - 1].range;
 
-        Debug.Log($"Placed tower: {Data.name} with the price of {Data.price} points");
+        Debug.Log($"Placed Tower: {Data.name} with the price of {Data.price} points");
     }
 
     [ContextMenu("Upgrade Tower")]
     public void UpdateTowerStats()
     {
-        int newHPDifference = Data.levels[currentLevel].maxHP - Data.levels[currentLevel -1].maxHP;
+        int newHPDifference = Data.levels[currentLevel].maxHP - Data.levels[currentLevel - 1].maxHP;
 
         currentLevel++;
 
@@ -31,5 +36,18 @@ public class Tower : MonoBehaviour
         damage = Data.levels[currentLevel - 1].damage;
         attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
         range = Data.levels[currentLevel - 1].range;
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (IsDead) return;
+
+        currentHP -= amount;
+        if (currentHP <= 0)
+        {
+            currentHP = 0;
+            OnDeath?.Invoke(this);
+            Destroy(gameObject);
+        }
     }
 }
