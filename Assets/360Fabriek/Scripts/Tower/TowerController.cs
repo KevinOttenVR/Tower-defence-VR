@@ -56,16 +56,4 @@ public class TowerController : MonoBehaviour
             Debug.Log("Not enough money to upgrade!");
         }
     }
-
-    void TakeDamage(int amount, GameObject tower)
-    {
-        Tower towerInstance = tower.GetComponent<Tower>();
-        
-        towerInstance.TakeDamage(amount);
-        if(towerInstance.currentHP <= 0)
-        {
-            Destroy(tower);
-        }
-
-    }
 }
