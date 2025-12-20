@@ -38,7 +38,23 @@ MonoBehaviour:
     attackSpeed: 5
     range: 3
     movementSpeed: 5
+  - level: 2
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 2
   - level: 3
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 2
+  - level: 4
     upgradePrice: 500
     destroyOrKillPrice: 100
     maxHP: 200

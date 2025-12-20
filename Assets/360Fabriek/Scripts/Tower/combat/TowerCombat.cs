@@ -14,6 +14,8 @@ public class TowerCombat : MonoBehaviour
     private Coroutine attackLoop;
     private NPC currentTarget;
 
+    [SerializeField] private Transform firePoint;
+
     private void Awake()
     {
         tower = GetComponent<Tower>();
@@ -69,7 +71,7 @@ public class TowerCombat : MonoBehaviour
         // Prevent friendly fire
         if (npc.Data != null && npc.Data.type != NPCType.enemy) return;
 
-        Debug.Log($"[TowerCombat] ENTER: {npc.name} -> queue={queue.Count} (tower={name})");
+        //Debug.Log($"[TowerCombat] ENTER: {npc.name} -> queue={queue.Count} (tower={name})");
         AddToQueue(npc);
         EnsureAttackLoopRunning();
     }
@@ -79,7 +81,7 @@ public class TowerCombat : MonoBehaviour
         if (!other.TryGetComponent(out NPC npc)) return;
         RemoveFromQueue(npc);
         
-        Debug.Log($"[TowerCombat] EXIT: {npc.name} -> queue={queue.Count} (tower={name})");
+        //Debug.Log($"[TowerCombat] EXIT: {npc.name} -> queue={queue.Count} (tower={name})");
     }
 
     private void AddToQueue(NPC npc)
@@ -176,18 +178,31 @@ public class TowerCombat : MonoBehaviour
                 yield break;
             }
 
-            Debug.Log($"[TowerCombat] HIT: {currentTarget.name} for {tower.damage} (tower={name})");
-
-            currentTarget.TakeDamage(tower.damage);
+            Shoot();
 
             float interval = Mathf.Max(tower.attackSpeed, 0.01f);
             yield return new WaitForSeconds(interval);
-
 
             if (currentTarget != null && (currentTarget.IsDead || !nodeByNpc.ContainsKey(currentTarget)))
             {
                 currentTarget = null;
             }
+        }
+    }
+
+    private void Shoot()
+    {
+        if (tower.Data.projectilePrefab == null) return;
+
+        // Use firePoint if assigned, otherwise use tower position
+        Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
+
+        GameObject projObj = Instantiate(tower.Data.projectilePrefab, spawnPos, Quaternion.identity);
+        Projectile projectile = projObj.GetComponent<Projectile>();
+
+        if (projectile != null)
+        {
+            projectile.Seek(currentTarget, tower.damage);
         }
     }
 }

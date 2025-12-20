@@ -1,55 +1,83 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class WaveSystem : MonoBehaviour
 {
-    [Header("NPC Settings")]
-    public NPCData npcData;
-
-    [Header("Spawn Interval")]
-    public float minInterval = 1f;
-    public float maxInterval = 5f;
-
-    [Header("Path Settings")]
+    [Header("Data")]
+    public WaveDatabase waveDatabase;
     public PathManager pathManager;
+
+    [Header("Settings")]
+    public bool autoStartNextWave = false;
+
+    private int currentWaveIndex = 0;
+    private bool isWaveActive = false;
 
     private void Start()
     {
-        StartCoroutine(SpawnRoutine());
-    }
-
-    private IEnumerator SpawnRoutine()
-    {
-        while (true)
+        if (waveDatabase != null && waveDatabase.waves.Count > 0)
         {
-            float waitTime = Random.Range(minInterval, maxInterval);
-            yield return new WaitForSeconds(waitTime);
-
-            SpawnNPC();
+            StartCoroutine(LevelRoutine());
         }
     }
 
-    private void SpawnNPC()
+    private IEnumerator LevelRoutine()
     {
-        if (npcData == null || npcData.NPCPrefab == null || npcData.spawnPoints.Length == 0)
+        while (currentWaveIndex < waveDatabase.waves.Count)
         {
-            Debug.LogWarning("NPCData or prefab missing!");
-            return;
+            yield return StartCoroutine(SpawnWave(waveDatabase.waves[currentWaveIndex]));
+
+            Debug.Log($"Wave {currentWaveIndex + 1} Spawning Complete.");
+
+            // Post-wave delay (Customize logic here if you want to wait for all enemies to be dead instead)
+            yield return new WaitForSeconds(waveDatabase.waves[currentWaveIndex].postWaveDelay);
+
+            currentWaveIndex++;
+        }
+        Debug.Log("All Waves Completed!");
+    }
+
+    private IEnumerator SpawnWave(WaveData wave)
+    {
+        isWaveActive = true;
+
+        foreach (var group in wave.enemyGroups)
+        {
+            for (int i = 0; i < group.count; i++)
+            {
+                SpawnNPC(group.enemyType, group.enemyLevel);
+                yield return new WaitForSeconds(group.timeBetweenSpawns);
+            }
         }
 
-        int index = Random.Range(0, npcData.spawnPoints.Length);
-        Vector3 spawnPosition = npcData.spawnPoints[index].spawnPoint;
+        isWaveActive = false;
+    }
 
-        float radius = 3f;
-        Vector2 randomOffset = Random.insideUnitCircle * radius;
+    private void SpawnNPC(NPCData data, int level)
+    {
+        // Pick a random spawn point from the NPC's own data
+        int index = Random.Range(0, data.spawnPoints.Length);
+        Vector3 spawnPosition = data.spawnPoints[index].spawnPoint;
+
+        // Apply a small randomization spread
+        Vector2 randomOffset = Random.insideUnitCircle * 2f;
         spawnPosition += new Vector3(randomOffset.x, 0, randomOffset.y);
 
-        GameObject npcObj = Instantiate(npcData.NPCPrefab, spawnPosition, Quaternion.identity);
+        GameObject npcObj = Instantiate(data.NPCPrefab, spawnPosition, Quaternion.identity);
 
-        PathFollower follower = npcObj.GetComponent<PathFollower>();
+        // Initialize Components
         NPC npcComponent = npcObj.GetComponent<NPC>();
+        PathFollower follower = npcObj.GetComponent<PathFollower>();
 
-        if (follower != null && npcComponent != null)
+        if (npcComponent != null)
+        {
+            npcComponent.currentLevel = level;
+            // Force re-initialization of stats based on the new level
+            npcComponent.UpdateNpcStats(level);
+        }
+
+        if (follower != null && pathManager != null)
         {
             follower.Initialize(pathManager.waypoints, npcComponent.movementSpeed);
         }

@@ -17,13 +17,42 @@ public class NPC : MonoBehaviour
 
     private Slider hpSlider;
 
+
+
     void Awake()
     {
-        currentHP = Data.levels[currentLevel - 1].maxHP;
-        damage = Data.levels[currentLevel - 1].damage;
-        attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
-        range = Data.levels[currentLevel - 1].range;
-        movementSpeed = Data.levels[currentLevel - 1].movementSpeed;
+        if (hpSlider == null)
+        {
+            hpSlider = GetComponentInChildren<Slider>();
+        }
+    }
+
+    void Start()
+    {
+        if (currentHP == 0)
+        {
+            InitializeStats();
+        }
+    }
+
+    public void UpdateNpcStats(int newLevel)
+    {
+        currentLevel = newLevel;
+        InitializeStats();
+    }
+
+    private void InitializeStats()
+    {
+        if (Data == null || Data.levels == null || Data.levels.Length == 0) return;
+
+        int dataIndex = Mathf.Clamp(currentLevel - 1, 0, Data.levels.Length - 1);
+        var stats = Data.levels[dataIndex];
+
+        currentHP = stats.maxHP;
+        damage = stats.damage;
+        attackSpeed = stats.attackSpeed;
+        range = stats.range;
+        movementSpeed = stats.movementSpeed;
 
         if (hpSlider == null)
         {
@@ -34,28 +63,7 @@ public class NPC : MonoBehaviour
         {
             hpSlider.maxValue = currentHP;
             hpSlider.value = currentHP;
-        }
-
-        Debug.Log($"Placed npc: {Data.name} with the price of {Data.price} points");
-    }
-
-    [ContextMenu("Upgrade npc")]
-    public void UpdateNpcStats()
-    {
-        int newHPDifference = Data.levels[currentLevel].maxHP - Data.levels[currentLevel - 1].maxHP;
-
-        currentLevel++;
-
-        currentHP += newHPDifference;
-        damage = Data.levels[currentLevel - 1].damage;
-        attackSpeed = Data.levels[currentLevel - 1].attackSpeed;
-        range = Data.levels[currentLevel - 1].range;
-        movementSpeed = Data.levels[currentLevel - 1].movementSpeed;
-
-        if (hpSlider != null)
-        {
-            hpSlider.maxValue = currentHP;
-            hpSlider.value = currentHP;
+            Canvas.ForceUpdateCanvases();
         }
     }
 

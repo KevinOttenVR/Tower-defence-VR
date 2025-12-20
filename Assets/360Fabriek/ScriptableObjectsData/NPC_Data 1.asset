@@ -12,15 +12,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
   m_Name: NPC_Data 1
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  NPCPrefab: {fileID: 0}
+  NPCPrefab: {fileID: 771223339620564273, guid: 05ba2f3bad02c014b8fee9fe2dd3dca3, type: 3}
   projectilePrefab: {fileID: 0}
-  name: 
-  price: 0
-  type: 0
-  scale: {x: 0, y: 0, z: 0}
+  name: Robot1
+  price: 500
+  type: 1
+  scale: {x: 1, y: 1, z: 1}
   weaponType: 0
   spawnPoints:
-  - spawnPoint: {fileID: 0}
-    weight: 1
-    minWave: 0
-  levels: []
+  - spawnPoint: {x: -21.06, y: 0.496, z: 0.3}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -21.06, y: 0.496, z: 7.25}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -21.06, y: 0.496, z: 13.48}
+    weight: 4
+    minWave: 7
+  levels:
+  - level: 1
+    upgradePrice: 200
+    destroyOrKillPrice: 100
+    maxHP: 100
+    damage: 50
+    attackSpeed: 5
+    range: 3
+    movementSpeed: 5
+  - level: 2
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 2
+  - level: 3
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 2
+  - level: 4
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 2
