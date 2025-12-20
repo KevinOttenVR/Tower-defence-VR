@@ -10,12 +10,21 @@ public class WaveSystem : MonoBehaviour
 
     [Header("Settings")]
     public bool autoStartNextWave = false;
+    [Tooltip("Drag your Map/Ground object here. NPCs will spawn as its children.")]
+    public Transform levelParent;
 
     private int currentWaveIndex = 0;
     private bool isWaveActive = false;
 
     private void Start()
     {
+        // Optional: Auto-find the map if you forgot to drag it in
+        if (levelParent == null)
+        {
+            GameObject mapObj = GameObject.FindGameObjectWithTag("Ground"); // Or "LevelMap"
+            if (mapObj != null) levelParent = mapObj.transform;
+        }
+
         if (waveDatabase != null && waveDatabase.waves.Count > 0)
         {
             StartCoroutine(LevelRoutine());
@@ -30,7 +39,6 @@ public class WaveSystem : MonoBehaviour
 
             Debug.Log($"Wave {currentWaveIndex + 1} Spawning Complete.");
 
-            // Post-wave delay (Customize logic here if you want to wait for all enemies to be dead instead)
             yield return new WaitForSeconds(waveDatabase.waves[currentWaveIndex].postWaveDelay);
 
             currentWaveIndex++;
@@ -56,24 +64,24 @@ public class WaveSystem : MonoBehaviour
 
     private void SpawnNPC(NPCData data, int level)
     {
-        // Pick a random spawn point from the NPC's own data
         int index = Random.Range(0, data.spawnPoints.Length);
-        Vector3 spawnPosition = data.spawnPoints[index].spawnPoint;
 
-        // Apply a small randomization spread
-        Vector2 randomOffset = Random.insideUnitCircle * 2f;
-        spawnPosition += new Vector3(randomOffset.x, 0, randomOffset.y);
+        Vector3 localSpawnPos = data.spawnPoints[index].spawnPoint;
 
-        GameObject npcObj = Instantiate(data.NPCPrefab, spawnPosition, Quaternion.identity);
+        Vector3 worldSpawnPos = levelParent.TransformPoint(localSpawnPos);
 
-        // Initialize Components
+        Vector2 randomOffset = Random.insideUnitCircle * 2f * levelParent.localScale.x;
+
+        Vector3 finalPosition = worldSpawnPos + (levelParent.rotation * new Vector3(randomOffset.x, 0, randomOffset.y));
+
+        GameObject npcObj = Instantiate(data.NPCPrefab, finalPosition, Quaternion.identity, levelParent);
+
         NPC npcComponent = npcObj.GetComponent<NPC>();
         PathFollower follower = npcObj.GetComponent<PathFollower>();
 
         if (npcComponent != null)
         {
             npcComponent.currentLevel = level;
-            // Force re-initialization of stats based on the new level
             npcComponent.UpdateNpcStats(level);
         }
 

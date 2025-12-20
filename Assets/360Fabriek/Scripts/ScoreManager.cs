@@ -3,7 +3,7 @@ using TMPro;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int score = 100;
+    public static int score = 1000;
     [SerializeField] private TMP_Text m_Text;
 
     void Update()

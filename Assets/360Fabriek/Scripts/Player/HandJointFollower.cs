@@ -4,7 +4,7 @@ using UnityEngine.XR.Management;
 
 public class HandJointFollower : MonoBehaviour
 {
-    public XRHandJointID jointToFollow = XRHandJointID.Palm; // Palm is best for grabbing
+    public XRHandJointID jointToFollow = XRHandJointID.Palm;
     public bool isRightHand = true;
 
     private XRHandSubsystem handSubsystem;
@@ -26,8 +26,10 @@ public class HandJointFollower : MonoBehaviour
         var joint = hand.GetJoint(jointToFollow);
         if (joint.TryGetPose(out Pose pose))
         {
-            transform.position = pose.position;
-            transform.rotation = pose.rotation;
+            // --- THE FIX ---
+            // Use localPosition/localRotation because hand data is relative to the XR Rig
+            transform.localPosition = pose.position;
+            transform.localRotation = pose.rotation;
         }
     }
 
