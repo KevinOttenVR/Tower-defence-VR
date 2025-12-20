@@ -12,8 +12,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Barrel
+    second: {fileID: 2100000, guid: 8cc5d2fc2aec4a64daa29910ce2534c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Black
     second: {fileID: 2100000, guid: e41490bea80d6d341a4c0c350a0690bc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flag_Flag
+    second: {fileID: 2100000, guid: c272a9561bef1794eafd68e4d8a097ad, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -27,13 +37,43 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: 3edd803c7a4b0b047b410a2563c9af74, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 0878d4b7dbf66cb428fa5528f3708596, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Outer
     second: {fileID: 2100000, guid: 120db577f18f15b40a9cd2468e60a85c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Poles
+    second: {fileID: 2100000, guid: ab34732afe6eb974ab23671f330b0ed9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Ridge
     second: {fileID: 2100000, guid: 13c1ba429b2527e48bbb230f3c7c9620, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: ArmyFlag
+    second: {fileID: 2800000, guid: 80de92610df74b7488ed78c07dfd6b57, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Gemini_Generated_Image_5wwxdj5wwxdj5wwx
+    second: {fileID: 2800000, guid: 649c6dbca519bdf40bbf3deb1ebe244c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Gemini_Generated_Image_f3w69df3w69df3w6
+    second: {fileID: 2800000, guid: 0d2918e29ba589c448b7b877ab115607, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
