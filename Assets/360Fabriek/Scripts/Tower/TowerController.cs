@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class TowerController : MonoBehaviour
@@ -21,14 +22,14 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    public void PlaceTower(TowerData towerData, Vector3 position)
+    public void PlaceTower(TowerData towerData, Vector3 worldPosition, Quaternion worldRotation, Transform parentTransform)
     {
         int towerPrice = towerData.price;
 
         if (ScoreManager.score >= towerPrice)
         {
             ScoreManager.score -= towerPrice;
-            Instantiate(towerData.towerPrefab, position, Quaternion.identity);
+            GameObject newTower = Instantiate(towerData.towerPrefab, worldPosition, worldRotation, parentTransform);
         }
         else
         {
