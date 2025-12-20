@@ -11,7 +11,7 @@ public class HandMenuToggleOnly : MonoBehaviour
 
     [Header("References")]
     public Transform headCamera;
-    public GameObject menuObject; // Drag your Menu Canvas/Object here
+    public GameObject menuObject;
 
     [Header("Events")]
     public UnityEvent OnMenuOpen;
@@ -29,7 +29,6 @@ public class HandMenuToggleOnly : MonoBehaviour
         GetHandSubsystem();
         if (headCamera == null) headCamera = Camera.main.transform;
 
-        // Ensure it starts closed
         if (menuObject != null) menuObject.SetActive(false);
     }
 
@@ -52,9 +51,7 @@ public class HandMenuToggleOnly : MonoBehaviour
 
         if (palmJoint.TryGetPose(out Pose palmPose))
         {
-            // Vector pointing out of palm (Use palmPose.forward if Blue line pointed at face)
-            Vector3 palmNormal = -palmPose.up;
-            // Vector3 palmNormal = palmPose.forward; // SWAP TO THIS IF NEEDED
+            Vector3 palmNormal = -palmPose.forward;
 
             Vector3 handToHead = (headCamera.position - palmPose.position).normalized;
             float facingScore = Vector3.Dot(palmNormal, handToHead);

@@ -15,5 +15,5 @@ public class EnemyGroup
 public class WaveData : ScriptableObject
 {
     public List<EnemyGroup> enemyGroups;
-    public float postWaveDelay = 10f; // Time to wait after last enemy spawns
+    public float postWaveDelay = 10f;
 }

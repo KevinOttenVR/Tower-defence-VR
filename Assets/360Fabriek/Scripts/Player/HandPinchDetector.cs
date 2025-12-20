@@ -5,7 +5,7 @@ using UnityEngine.XR.Management;
 public class HandPinchDetector : MonoBehaviour
 {
     [Header("Settings")]
-    public float pinchThreshold = 0.02f; // 2cm distance to trigger pinch
+    public float pinchThreshold = 0.02f;
     public Handedness targetHand = Handedness.Right;
 
     [Header("Debug")]
@@ -27,7 +27,6 @@ public class HandPinchDetector : MonoBehaviour
             return;
         }
 
-        // Get the correct hand (Left or Right)
         XRHand hand = targetHand == Handedness.Left ? handSubsystem.leftHand : handSubsystem.rightHand;
 
         if (!hand.isTracked)
@@ -36,16 +35,13 @@ public class HandPinchDetector : MonoBehaviour
             return;
         }
 
-        // Get joint positions
         var thumbTip = hand.GetJoint(XRHandJointID.ThumbTip);
         var indexTip = hand.GetJoint(XRHandJointID.IndexTip);
 
         if (thumbTip.TryGetPose(out Pose thumbPose) && indexTip.TryGetPose(out Pose indexPose))
         {
-            // Calculate distance
             currentDistance = Vector3.Distance(thumbPose.position, indexPose.position);
 
-            // Check threshold
             bool currentlyPinching = currentDistance < pinchThreshold;
 
             if (currentlyPinching != isPinching)
@@ -54,7 +50,6 @@ public class HandPinchDetector : MonoBehaviour
                 if (isPinching)
                 {
                     Debug.Log($"{targetHand} Hand PINCH START!");
-                    // Trigger your game events here (e.g., spawn tower)
                 }
                 else
                 {

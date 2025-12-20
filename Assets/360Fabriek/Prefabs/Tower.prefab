@@ -63,7 +63,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.04, y: -4.15, z: 8.69}
-  m_LocalScale: {x: 1, y: 4.12, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4357400762232180179}
@@ -212,6 +212,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1454914919904112346}
     m_Modifications:
+    - target: {fileID: 537624790561549011, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 546688623808097749, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1594498057158402689, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2600411540131241126, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590415237144571243, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278434874311894918, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4617019856914198055, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -252,9 +276,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4893757888674867589, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377611602305096798, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5429410088600990877, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
       propertyPath: m_Name
       value: Base_Tower_Level_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8775481049927800867, guid: bc4f1d42a12afab4dbe295fd737425c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

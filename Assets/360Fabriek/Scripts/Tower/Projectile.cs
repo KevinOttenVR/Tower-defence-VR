@@ -20,7 +20,6 @@ public class Projectile : MonoBehaviour
             return;
         }
 
-        // Move toward the target
         Vector3 dir = target.transform.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
@@ -40,7 +39,6 @@ public class Projectile : MonoBehaviour
         {
             target.TakeDamage(damage);
         }
-        // Add hit effects/particles here if you want!
         Destroy(gameObject);
     }
 }

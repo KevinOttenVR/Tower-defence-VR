@@ -22,14 +22,13 @@ public class TowerPlacementGhost : MonoBehaviour
     [HideInInspector] public Transform hitParent;
 
     private BoxCollider boxCollider;
-    private Vector3 originalScale; // Store the prefab's scale here
+    private Vector3 originalScale;
 
     private void Awake()
     {
         boxCollider = GetComponent<BoxCollider>();
         boxCollider.isTrigger = true;
 
-        // Capture the scale you set in the Prefab Inspector
         originalScale = transform.localScale;
     }
 
@@ -41,7 +40,6 @@ public class TowerPlacementGhost : MonoBehaviour
         {
             HandleMapParenting(hit.transform);
 
-            // Position & Rotation
             transform.position = hit.point + (hit.normal * placementHeightOffset);
 
             Vector3 forward = Vector3.ProjectOnPlane(handRotation * Vector3.forward, hit.normal);
@@ -51,7 +49,6 @@ public class TowerPlacementGhost : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothness);
             }
 
-            // Sync physics so the OverlapBox checks the correct location/scale
             Physics.SyncTransforms();
 
             isValidPosition = !CheckObstructed();
@@ -71,11 +68,10 @@ public class TowerPlacementGhost : MonoBehaviour
         hitParent = hitObject;
         Transform mapRoot = GetMapRoot(hitObject);
 
-        // If found a map root and we aren't its child yet
         if (mapRoot != null && transform.parent != mapRoot)
         {
             transform.SetParent(mapRoot, true);
-            transform.localScale = originalScale; // Restore prefab scale relative to parent
+            transform.localScale = originalScale;
         }
         else if (mapRoot == null && transform.parent != null)
         {
@@ -88,7 +84,7 @@ public class TowerPlacementGhost : MonoBehaviour
         if (transform.parent != null)
         {
             transform.SetParent(null, true);
-            transform.localScale = originalScale; // Keep consistent size in world space
+            transform.localScale = originalScale;
         }
     }
 

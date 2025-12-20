@@ -18,10 +18,9 @@ public class WaveSystem : MonoBehaviour
 
     private void Start()
     {
-        // Optional: Auto-find the map if you forgot to drag it in
         if (levelParent == null)
         {
-            GameObject mapObj = GameObject.FindGameObjectWithTag("Ground"); // Or "LevelMap"
+            GameObject mapObj = GameObject.FindGameObjectWithTag("Ground");
             if (mapObj != null) levelParent = mapObj.transform;
         }
 

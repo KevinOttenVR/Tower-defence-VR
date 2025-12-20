@@ -17,17 +17,13 @@ public class HandJointFollower : MonoBehaviour
             return;
         }
 
-        // 1. Get the hand
         XRHand hand = isRightHand ? handSubsystem.rightHand : handSubsystem.leftHand;
 
         if (!hand.isTracked) return;
 
-        // 2. Get the joint pose
         var joint = hand.GetJoint(jointToFollow);
         if (joint.TryGetPose(out Pose pose))
         {
-            // --- THE FIX ---
-            // Use localPosition/localRotation because hand data is relative to the XR Rig
             transform.localPosition = pose.position;
             transform.localRotation = pose.rotation;
         }
