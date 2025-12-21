@@ -10,7 +10,6 @@ public class WaveSystem : MonoBehaviour
 
     [Header("Settings")]
     public bool autoStartNextWave = false;
-    [Tooltip("Drag your Map/Ground object here. NPCs will spawn as its children.")]
     public Transform levelParent;
 
     private int currentWaveIndex = 0;

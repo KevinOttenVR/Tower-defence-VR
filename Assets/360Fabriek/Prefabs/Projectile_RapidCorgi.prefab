@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 54432921455774401}
   - component: {fileID: -8645249969920819168}
   - component: {fileID: 6660099235678544357}
+  - component: {fileID: 6089291506284134635}
   m_Layer: 0
   m_Name: Projectile_RapidCorgi
   m_TagString: Untagged
@@ -41,7 +42,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865124086649292111}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1245847b8d068e749ba73c0e4fa3a2f4, type: 3}
   m_Name: 
@@ -71,6 +72,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.17
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6089291506284134635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865124086649292111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87e78a8e002d7a446977c651079c6838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Projectile
 --- !u!1001 &2891072771321636079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,13 +222,13 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.22794205
         inSlope: -0.28358373
         outSlope: -0.28358373
         tangentMode: 0

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TowerRapid_Data
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
   towerPrefab: {fileID: 3113791512327004827, guid: 75707b6ab2c4d044f9d2125ad2d3f960, type: 3}
-  projectilePrefab: {fileID: 1423291690284978841, guid: 751a799d58f30ac44b25ba06f12a4bac, type: 3}
+  projectilePrefab: {fileID: 1865124086649292111, guid: bf014fce1892c2c42b3e2262c3b98861, type: 3}
   name: Harold
   price: 150
   scale: {x: 1, y: 1, z: 1}
@@ -23,8 +23,8 @@ MonoBehaviour:
     upgradePrice: 200
     destroyOrKillPrice: 50
     maxHP: 1000
-    damage: 10
-    attackSpeed: 1
+    damage: 5
+    attackSpeed: 0.4
     range: 0.2
     movementSpeed: 0
   - level: 2
@@ -32,6 +32,6 @@ MonoBehaviour:
     destroyOrKillPrice: 125
     maxHP: 1400
     damage: 50
-    attackSpeed: 0.9
+    attackSpeed: 0.3
     range: 0.4
     movementSpeed: 0

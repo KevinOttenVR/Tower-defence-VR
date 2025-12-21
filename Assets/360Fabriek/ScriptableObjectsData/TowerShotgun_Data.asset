@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89525f207e55c9043b44cd2a88b81792, type: 3}
   m_Name: TowerShotgun_Data
   m_EditorClassIdentifier: Assembly-CSharp::TowerData
-  towerPrefab: {fileID: 8545249548633282117, guid: 36d0904229fe7f7469ec008db534a51b, type: 3}
-  projectilePrefab: {fileID: 1423291690284978841, guid: 751a799d58f30ac44b25ba06f12a4bac, type: 3}
+  towerPrefab: {fileID: 4073010878695629950, guid: 9bfcdd6d72bc4764190f99e4f81cf53d, type: 3}
+  projectilePrefab: {fileID: 7301370260018000725, guid: 71061323ebe824d4cb7534279ff62e81, type: 3}
   name: Harold
   price: 150
   scale: {x: 1, y: 1, z: 1}
@@ -23,15 +23,15 @@ MonoBehaviour:
     upgradePrice: 200
     destroyOrKillPrice: 50
     maxHP: 1000
-    damage: 10
-    attackSpeed: 1
-    range: 0.2
+    damage: 50
+    attackSpeed: 4
+    range: 0.05
     movementSpeed: 0
   - level: 2
     upgradePrice: 500
     destroyOrKillPrice: 125
     maxHP: 1400
-    damage: 50
-    attackSpeed: 0.9
-    range: 0.4
+    damage: 55
+    attackSpeed: 4
+    range: 0.05
     movementSpeed: 0
