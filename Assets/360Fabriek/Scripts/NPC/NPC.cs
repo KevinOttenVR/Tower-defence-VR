@@ -9,7 +9,6 @@ public class NPC : MonoBehaviour
     public NPCData Data;
 
     [Header("Visual Effects")]
-    [Tooltip("Assign the Reveal_Digital_mat here")]
     public Material revealMaterial;
     public string shaderPropertyName = "_Effect_Progress";
     public float effectDuration = 4.0f;
@@ -26,18 +25,20 @@ public class NPC : MonoBehaviour
     public event System.Action<NPC> OnDeath;
 
     private Slider hpSlider;
+    private Canvas hpCanvas;
     private Animator animator;
     private Collider npcCollider;
     private PathFollower pathFollower;
     private Renderer[] renderers;
 
-    private List<Material[]> originalMaterials = new List<Material[]>();
+    private List<Material[]> originalMaterials = new();
     private bool deathTriggered = false;
     private int effectPropID;
 
     void Awake()
     {
         hpSlider = GetComponentInChildren<Slider>();
+        hpCanvas = GetComponentInChildren<Canvas>();
         animator = GetComponentInChildren<Animator>();
         npcCollider = GetComponent<Collider>();
         pathFollower = GetComponent<PathFollower>();
@@ -58,7 +59,12 @@ public class NPC : MonoBehaviour
 
         if (revealMaterial != null)
         {
+            if (hpCanvas != null) hpCanvas.enabled = false;
             StartCoroutine(SpawnEffectRoutine());
+        }
+        else
+        {
+            if (hpCanvas != null) hpCanvas.enabled = true;
         }
     }
 
@@ -111,6 +117,8 @@ public class NPC : MonoBehaviour
         if (deathTriggered) return;
         deathTriggered = true;
 
+        if (hpCanvas != null) hpCanvas.enabled = false;
+
         if (pathFollower != null) pathFollower.enabled = false;
         if (npcCollider != null) npcCollider.enabled = false;
         if (animator != null) animator.SetBool("isDead01", true);
@@ -128,7 +136,6 @@ public class NPC : MonoBehaviour
             Destroy(gameObject, 5f);
         }
     }
-
 
     private void StoreOriginalMaterials()
     {
@@ -188,6 +195,8 @@ public class NPC : MonoBehaviour
         }
 
         RestoreOriginalMaterials();
+
+        if (hpCanvas != null) hpCanvas.enabled = true;
     }
 
     private IEnumerator DeathEffectRoutine()

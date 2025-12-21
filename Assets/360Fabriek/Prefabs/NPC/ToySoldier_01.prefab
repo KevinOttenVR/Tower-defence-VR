@@ -1325,6 +1325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: a232a6ccd41db7648a0c619816af7342, type: 2}
+  revealMaterial: {fileID: 0}
+  shaderPropertyName: 
+  effectDuration: 2
   currentLevel: 1
   currentHP: 0
   damage: 0

@@ -8,6 +8,6 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        m_Text.text = $"Score: {score}";
+        m_Text.text = $"Money: {score}";
     }
 }

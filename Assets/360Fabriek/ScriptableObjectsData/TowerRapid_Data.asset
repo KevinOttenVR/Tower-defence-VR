@@ -15,7 +15,7 @@ MonoBehaviour:
   towerPrefab: {fileID: 3113791512327004827, guid: 75707b6ab2c4d044f9d2125ad2d3f960, type: 3}
   projectilePrefab: {fileID: 1865124086649292111, guid: bf014fce1892c2c42b3e2262c3b98861, type: 3}
   name: Harold
-  price: 150
+  price: 250
   scale: {x: 1, y: 1, z: 1}
   weaponType: 1
   levels:
