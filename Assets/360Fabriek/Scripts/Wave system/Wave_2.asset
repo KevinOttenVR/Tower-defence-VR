@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveData
   enemyGroups:
   - enemyType: {fileID: 11400000, guid: a232a6ccd41db7648a0c619816af7342, type: 2}
-    count: 8
+    count: 2
     enemyLevel: 1
     timeBetweenSpawns: 4
-  - enemyType: {fileID: 11400000, guid: 134392496e000cf42aed3b2fdd69d0e6, type: 2}
-    count: 2
+  - enemyType: {fileID: 11400000, guid: c3b1b49e946db5d419dec6add904914a, type: 2}
+    count: 6
     enemyLevel: 1
     timeBetweenSpawns: 2
   postWaveDelay: 5

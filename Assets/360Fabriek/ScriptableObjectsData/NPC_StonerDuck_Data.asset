@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
-  m_Name: NPC_Data 1
+  m_Name: NPC_StonerDuck_Data
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  NPCPrefab: {fileID: 1386275097860912453, guid: 8d0dc3467d6f59849bc5b0540e0fa8fa, type: 3}
+  NPCPrefab: {fileID: 8390619950122398561, guid: 019c7d5a794489c4ba9e41b443dcdef2, type: 3}
   projectilePrefab: {fileID: 0}
   name: Robot1
   price: 500
@@ -20,13 +20,13 @@ MonoBehaviour:
   scale: {x: 1, y: 1, z: 1}
   weaponType: 0
   spawnPoints:
-  - spawnPoint: {x: -21.06, y: 0.496, z: 0.3}
+  - spawnPoint: {x: -13.96, y: 0, z: 72.715}
     weight: 4
     minWave: 7
-  - spawnPoint: {x: -21.06, y: 0.496, z: 7.25}
+  - spawnPoint: {x: -20.67, y: 0, z: 72.715}
     weight: 4
     minWave: 7
-  - spawnPoint: {x: -21.06, y: 0.496, z: 13.48}
+  - spawnPoint: {x: -7.779999, y: 0, z: 72.715}
     weight: 4
     minWave: 7
   levels:
@@ -37,7 +37,7 @@ MonoBehaviour:
     damage: 50
     attackSpeed: 5
     range: 3
-    movementSpeed: 0.5
+    movementSpeed: 0.05
   - level: 2
     upgradePrice: 500
     destroyOrKillPrice: 100
@@ -45,7 +45,7 @@ MonoBehaviour:
     damage: 80
     attackSpeed: 6
     range: 3
-    movementSpeed: 0.6
+    movementSpeed: 0.06
   - level: 3
     upgradePrice: 500
     destroyOrKillPrice: 100
@@ -53,7 +53,7 @@ MonoBehaviour:
     damage: 80
     attackSpeed: 6
     range: 3
-    movementSpeed: 0.8
+    movementSpeed: 0.08
   - level: 4
     upgradePrice: 500
     destroyOrKillPrice: 100
@@ -61,4 +61,4 @@ MonoBehaviour:
     damage: 80
     attackSpeed: 6
     range: 3
-    movementSpeed: 1
+    movementSpeed: 0.1

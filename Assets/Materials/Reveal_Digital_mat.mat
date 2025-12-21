@@ -51,13 +51,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Effect_Progress: 0.07
+    - _Effect_Progress: 0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scrolling_Speed: 0.57
     - _Tiling: 50.9
     - _Tiling_Scan_Lines: 221
     - _Transparency: 0.549
+    - _XRMotionVectorsPass: 1
     m_Colors:
     - _Color: {r: 1.5827969, g: 0, b: 5.3837214, a: 1}
   m_BuildTextureStacks: []

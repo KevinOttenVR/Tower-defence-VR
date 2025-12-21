@@ -25,7 +25,7 @@ MonoBehaviour:
     maxHP: 1000
     damage: 50
     attackSpeed: 4
-    range: 0.05
+    range: 0.2
     movementSpeed: 0
   - level: 2
     upgradePrice: 500
@@ -33,5 +33,5 @@ MonoBehaviour:
     maxHP: 1400
     damage: 55
     attackSpeed: 4
-    range: 0.05
+    range: 0.2
     movementSpeed: 0

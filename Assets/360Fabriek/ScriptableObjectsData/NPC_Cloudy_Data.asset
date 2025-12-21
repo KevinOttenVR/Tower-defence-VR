@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
+  m_Name: NPC_Cloudy_Data
+  m_EditorClassIdentifier: Assembly-CSharp::NPCData
+  NPCPrefab: {fileID: 1465368620736061634, guid: 0ec9afde2175d9a418b0e84d88fb077c, type: 3}
+  projectilePrefab: {fileID: 0}
+  name: Robot1
+  price: 500
+  type: 1
+  scale: {x: 1, y: 1, z: 1}
+  weaponType: 0
+  spawnPoints:
+  - spawnPoint: {x: -13.96, y: 0, z: 72.715}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -20.67, y: 0, z: 72.715}
+    weight: 4
+    minWave: 7
+  - spawnPoint: {x: -7.779999, y: 0, z: 72.715}
+    weight: 4
+    minWave: 7
+  levels:
+  - level: 1
+    upgradePrice: 200
+    destroyOrKillPrice: 100
+    maxHP: 100
+    damage: 50
+    attackSpeed: 5
+    range: 3
+    movementSpeed: 0.05
+  - level: 2
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 0.06
+  - level: 3
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 0.08
+  - level: 4
+    upgradePrice: 500
+    destroyOrKillPrice: 100
+    maxHP: 200
+    damage: 80
+    attackSpeed: 6
+    range: 3
+    movementSpeed: 0.1

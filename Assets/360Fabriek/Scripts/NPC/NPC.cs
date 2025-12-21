@@ -1,11 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NPC : MonoBehaviour
 {
+    [Header("Data")]
     public NPCData Data;
 
+    [Header("Visual Effects")]
+    [Tooltip("Assign the Reveal_Digital_mat here")]
+    public Material revealMaterial;
+    public string shaderPropertyName = "_Effect_Progress";
+    public float effectDuration = 4.0f;
+
+    [Header("Current Stats")]
     public int currentLevel = 1;
     public int currentHP;
     public int damage;
@@ -20,8 +29,11 @@ public class NPC : MonoBehaviour
     private Animator animator;
     private Collider npcCollider;
     private PathFollower pathFollower;
+    private Renderer[] renderers;
 
+    private List<Material[]> originalMaterials = new List<Material[]>();
     private bool deathTriggered = false;
+    private int effectPropID;
 
     void Awake()
     {
@@ -29,14 +41,24 @@ public class NPC : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         npcCollider = GetComponent<Collider>();
         pathFollower = GetComponent<PathFollower>();
-    }
 
+        renderers = GetComponentsInChildren<Renderer>();
+
+        effectPropID = Shader.PropertyToID(shaderPropertyName);
+    }
 
     void Start()
     {
         if (currentHP == 0)
         {
             InitializeStats();
+        }
+
+        StoreOriginalMaterials();
+
+        if (revealMaterial != null)
+        {
+            StartCoroutine(SpawnEffectRoutine());
         }
     }
 
@@ -89,26 +111,109 @@ public class NPC : MonoBehaviour
         if (deathTriggered) return;
         deathTriggered = true;
 
-        if (pathFollower != null)
-            pathFollower.enabled = false;
-
-        if (npcCollider != null)
-            npcCollider.enabled = false;
-
-        if (animator != null)
-            animator.SetBool("isDead01", true);
+        if (pathFollower != null) pathFollower.enabled = false;
+        if (npcCollider != null) npcCollider.enabled = false;
+        if (animator != null) animator.SetBool("isDead01", true);
 
         ScoreManager.score += Data.levels[currentLevel - 1].destroyOrKillPrice;
 
         OnDeath?.Invoke(this);
 
-        StartCoroutine(DestroyAfterDelay(5f));
+        if (revealMaterial != null)
+        {
+            StartCoroutine(DeathEffectRoutine());
+        }
+        else
+        {
+            Destroy(gameObject, 5f);
+        }
     }
 
 
-    private IEnumerator DestroyAfterDelay(float delay)
+    private void StoreOriginalMaterials()
     {
-        yield return new WaitForSeconds(delay);
+        originalMaterials.Clear();
+        foreach (var rend in renderers)
+        {
+            originalMaterials.Add(rend.sharedMaterials);
+        }
+    }
+
+    private void ApplyRevealMaterial()
+    {
+        foreach (var rend in renderers)
+        {
+            Material[] newMats = new Material[rend.sharedMaterials.Length];
+            for (int i = 0; i < newMats.Length; i++)
+            {
+                newMats[i] = revealMaterial;
+            }
+            rend.materials = newMats;
+        }
+    }
+
+    private void RestoreOriginalMaterials()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            if (renderers[i] != null && i < originalMaterials.Count)
+            {
+                renderers[i].materials = originalMaterials[i];
+            }
+        }
+    }
+
+    private IEnumerator SpawnEffectRoutine()
+    {
+        ApplyRevealMaterial();
+
+        float timer = 0f;
+        float startVal = -1f;
+        float endVal = 0.5f;
+
+        while (timer < effectDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / effectDuration;
+            float currentValue = Mathf.Lerp(startVal, endVal, t);
+
+            foreach (var rend in renderers)
+            {
+                foreach (var mat in rend.materials)
+                {
+                    mat.SetFloat(effectPropID, currentValue);
+                }
+            }
+            yield return null;
+        }
+
+        RestoreOriginalMaterials();
+    }
+
+    private IEnumerator DeathEffectRoutine()
+    {
+        ApplyRevealMaterial();
+
+        float timer = 0f;
+        float startVal = 0.5f;
+        float endVal = -1f;
+
+        while (timer < effectDuration)
+        {
+            timer += Time.deltaTime;
+            float t = timer / effectDuration;
+            float currentValue = Mathf.Lerp(startVal, endVal, t);
+
+            foreach (var rend in renderers)
+            {
+                foreach (var mat in rend.materials)
+                {
+                    mat.SetFloat(effectPropID, currentValue);
+                }
+            }
+            yield return null;
+        }
+
         Destroy(gameObject);
     }
 }

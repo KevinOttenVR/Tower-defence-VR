@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
-  m_Name: NPC_Data
+  m_Name: NPC_MonsterGlitch_Data
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  NPCPrefab: {fileID: 1386275097860912453, guid: 8d0dc3467d6f59849bc5b0540e0fa8fa, type: 3}
+  NPCPrefab: {fileID: 6619640374692894685, guid: 59dca1b1bef252347960531e8b1b4f01, type: 3}
   projectilePrefab: {fileID: 0}
   name: Robot1
   price: 500
@@ -20,13 +20,13 @@ MonoBehaviour:
   scale: {x: 1, y: 1, z: 1}
   weaponType: 0
   spawnPoints:
-  - spawnPoint: {x: -21.06, y: 0.496, z: 0.3}
+  - spawnPoint: {x: -13.96, y: 0, z: 72.715}
     weight: 4
     minWave: 7
-  - spawnPoint: {x: -21.06, y: 0.496, z: 7.25}
+  - spawnPoint: {x: -20.67, y: 0, z: 72.715}
     weight: 4
     minWave: 7
-  - spawnPoint: {x: -21.06, y: 0.496, z: 13.48}
+  - spawnPoint: {x: -7.779999, y: 0, z: 72.715}
     weight: 4
     minWave: 7
   levels:
