@@ -20,5 +20,5 @@ MonoBehaviour:
   - enemyType: {fileID: 11400000, guid: 134392496e000cf42aed3b2fdd69d0e6, type: 2}
     count: 2
     enemyLevel: 1
-    timeBetweenSpawns: 4
+    timeBetweenSpawns: 2
   postWaveDelay: 5

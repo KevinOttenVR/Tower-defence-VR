@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.10818653, y: -0.88859874, z: 0.27375516, w: 0.35177553}
   m_LocalPosition: {x: -5.39, y: 4.87, z: 7.64}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9198381595031405569}
@@ -180,13 +180,13 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.4
+    widthMultiplier: 0.07
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0.6985294
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -284,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalRotation.x
@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalRotation.z
@@ -304,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493367516069333218, guid: ea0637741ec90274abddf4f486b640df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

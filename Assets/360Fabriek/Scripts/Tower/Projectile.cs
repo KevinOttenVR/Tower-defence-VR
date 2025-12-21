@@ -4,7 +4,7 @@ public class Projectile : MonoBehaviour
 {
     private NPC target;
     private int damage;
-    private float speed = 2f;
+    private float speed = 0.5f;
 
     public void Seek(NPC _target, int _damage)
     {

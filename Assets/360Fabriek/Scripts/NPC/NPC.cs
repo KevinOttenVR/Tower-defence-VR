@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class NPC : MonoBehaviour
 {
@@ -16,16 +17,20 @@ public class NPC : MonoBehaviour
     public event System.Action<NPC> OnDeath;
 
     private Slider hpSlider;
+    private Animator animator;
+    private Collider npcCollider;
+    private PathFollower pathFollower;
 
-
+    private bool deathTriggered = false;
 
     void Awake()
     {
-        if (hpSlider == null)
-        {
-            hpSlider = GetComponentInChildren<Slider>();
-        }
+        hpSlider = GetComponentInChildren<Slider>();
+        animator = GetComponentInChildren<Animator>();
+        npcCollider = GetComponent<Collider>();
+        pathFollower = GetComponent<PathFollower>();
     }
+
 
     void Start()
     {
@@ -54,25 +59,18 @@ public class NPC : MonoBehaviour
         range = stats.range;
         movementSpeed = stats.movementSpeed;
 
-        if (hpSlider == null)
-        {
-            hpSlider = GetComponentInChildren<Slider>();
-        }
-
         if (hpSlider != null)
         {
             hpSlider.maxValue = currentHP;
             hpSlider.value = currentHP;
-            Canvas.ForceUpdateCanvases();
         }
     }
 
     public void TakeDamage(int amount)
     {
-        if (IsDead) return;
+        if (IsDead || deathTriggered) return;
 
         currentHP -= amount;
-
         if (currentHP < 0) currentHP = 0;
 
         if (hpSlider != null)
@@ -82,10 +80,35 @@ public class NPC : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            ScoreManager.score += Data.levels[currentLevel - 1].destroyOrKillPrice;
-
-            OnDeath?.Invoke(this);
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        if (deathTriggered) return;
+        deathTriggered = true;
+
+        if (pathFollower != null)
+            pathFollower.enabled = false;
+
+        if (npcCollider != null)
+            npcCollider.enabled = false;
+
+        if (animator != null)
+            animator.SetBool("isDead01", true);
+
+        ScoreManager.score += Data.levels[currentLevel - 1].destroyOrKillPrice;
+
+        OnDeath?.Invoke(this);
+
+        StartCoroutine(DestroyAfterDelay(5f));
+    }
+
+
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(gameObject);
     }
 }

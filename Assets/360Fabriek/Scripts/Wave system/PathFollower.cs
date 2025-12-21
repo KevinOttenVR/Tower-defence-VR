@@ -4,55 +4,73 @@ public class PathFollower : MonoBehaviour
 {
     public Transform[] path;
     public float speed = 2f;
-    public float pathRadius = 50f;
+    public float rotationSpeed = 10f;
 
-    public float rotationSpeed = 180f;
+    public float reachThreshold = 0.01f;
 
     private int currentIndex = 0;
-    private Vector3 currentTarget;
+    private Animator animator;
+
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void Initialize(Transform[] waypoints, float moveSpeed)
     {
-        this.path = waypoints;
-        this.speed = moveSpeed;
+        path = waypoints;
+        speed = moveSpeed;
 
         if (path != null && path.Length > 0)
         {
-            SetNextTarget();
+            currentIndex = 0;
+            if (animator != null) animator.SetBool("isWalking", true);
         }
     }
 
     void Update()
     {
-        if (path == null || path.Length == 0 || currentIndex >= path.Length) return;
-
-        Vector3 direction = (currentTarget - transform.position).normalized;
-
-        transform.position += direction * speed * Time.deltaTime;
-
-        if (direction != Vector3.zero)
+        if (path == null || path.Length == 0 || currentIndex >= path.Length)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-            transform.rotation = Quaternion.RotateTowards(
-                transform.rotation,
-                targetRotation,
-                rotationSpeed * Time.deltaTime
-            );
+            if (animator != null) animator.SetBool("isWalking", false);
+            return;
         }
 
-        if (Vector3.Distance(transform.position, currentTarget) < 0.2f)
+        Vector3 targetPosition = path[currentIndex].position;
+        Vector3 currentPosition = transform.position;
+        float distX = targetPosition.x - currentPosition.x;
+        float distZ = targetPosition.z - currentPosition.z;
+
+        float distanceSquared = (distX * distX) + (distZ * distZ);
+        float thresholdSquared = reachThreshold * reachThreshold;
+
+        if (distanceSquared > thresholdSquared)
+        {
+            if (animator != null) animator.SetBool("isWalking", true);
+
+            Vector3 direction = (targetPosition - currentPosition).normalized;
+
+            transform.position += speed * Time.deltaTime * direction;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    targetRotation,
+                    rotationSpeed * Time.deltaTime
+                );
+            }
+        }
+        else
         {
             currentIndex++;
-            if (currentIndex < path.Length)
-                SetNextTarget();
-        }
-    }
 
-    private void SetNextTarget()
-    {
-        Vector3 basePosition = path[currentIndex].position;
-        Vector2 offset = Random.insideUnitCircle * pathRadius;
-        currentTarget = basePosition + new Vector3(offset.x, 0, offset.y);
+            if (currentIndex >= path.Length)
+            {
+                if (animator != null) animator.SetBool("isWalking", false);
+                // Reached the end
+            }
+        }
     }
 }

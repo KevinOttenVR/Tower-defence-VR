@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a7bfee8cb2851438ded5bc487b38f5, type: 3}
   m_Name: NPC_Data 1
   m_EditorClassIdentifier: Assembly-CSharp::NPCData
-  NPCPrefab: {fileID: 771223339620564273, guid: 05ba2f3bad02c014b8fee9fe2dd3dca3, type: 3}
+  NPCPrefab: {fileID: 1386275097860912453, guid: 8d0dc3467d6f59849bc5b0540e0fa8fa, type: 3}
   projectilePrefab: {fileID: 0}
   name: Robot1
   price: 500

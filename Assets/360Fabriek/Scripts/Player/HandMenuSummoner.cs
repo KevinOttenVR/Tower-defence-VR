@@ -51,7 +51,7 @@ public class HandMenuToggleOnly : MonoBehaviour
 
         if (palmJoint.TryGetPose(out Pose palmPose))
         {
-            Vector3 palmNormal = -palmPose.forward;
+            Vector3 palmNormal = -palmPose.up;
 
             Vector3 handToHead = (headCamera.position - palmPose.position).normalized;
             float facingScore = Vector3.Dot(palmNormal, handToHead);

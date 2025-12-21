@@ -15,7 +15,7 @@ public class PathManager : MonoBehaviour
         {
             if (waypoints[i] != null)
             {
-                Gizmos.DrawSphere(waypoints[i].position, 0.2f);
+                Gizmos.DrawSphere(waypoints[i].position, 0.02f);
 
                 if (i < waypoints.Length - 1 && waypoints[i + 1] != null)
                 {

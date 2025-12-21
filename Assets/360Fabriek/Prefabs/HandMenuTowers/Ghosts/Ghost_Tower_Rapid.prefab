@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168732710038348001}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 03c744a4d12eee04eb86cb8e8a90fceb, type: 3}
   m_Name: 
@@ -5817,7 +5817,7 @@ Transform:
   m_GameObject: {fileID: 6611261495255750858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.7, y: 0.0066285594, z: 34.97}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 17.41, y: 17.41, z: 17.41}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5888,10 +5888,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementGhost
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   obstacleLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1280
   mapTag: Ground
   rotationSmoothness: 10
   placementHeightOffset: 0
