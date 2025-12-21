@@ -2,11 +2,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class NPC : MonoBehaviour
 {
     [Header("Data")]
     public NPCData Data;
+    public PathFollower follower;
 
     [Header("Visual Effects")]
     public Material revealMaterial;
@@ -32,8 +34,10 @@ public class NPC : MonoBehaviour
     private Renderer[] renderers;
 
     private List<Material[]> originalMaterials = new();
+    private List<NPC> enemiesInRange = new();
     private bool deathTriggered = false;
     private int effectPropID;
+    private Coroutine attackRoutine;
 
     void Awake()
     {
@@ -112,7 +116,7 @@ public class NPC : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         if (deathTriggered) return;
         deathTriggered = true;
@@ -126,6 +130,7 @@ public class NPC : MonoBehaviour
         ScoreManager.score += Data.levels[currentLevel - 1].destroyOrKillPrice;
 
         OnDeath?.Invoke(this);
+        if (attackRoutine != null) StopCoroutine(attackRoutine);
 
         if (revealMaterial != null)
         {
@@ -224,5 +229,40 @@ public class NPC : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    private IEnumerator AttackEnemiesInRange()
+    {
+        while(enemiesInRange.Count > 0)
+        {
+            foreach (var enemy in enemiesInRange.ToList())
+            {
+
+                enemy.TakeDamage(damage);
+                enemy.OnDeath += (_) =>
+                {
+                    enemiesInRange.Remove(enemy);
+                };
+                yield return new WaitForSeconds(1 / attackSpeed);
+            }
+        }
+
+        if (enemiesInRange.Count == 0)
+            follower.stopped = false;
+
+        attackRoutine = null;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.TryGetComponent<NPC>(out var otherNPC)) return;
+        if (otherNPC.Data.type == Data.type) return;
+        if (deathTriggered) return;
+        if(otherNPC.deathTriggered) return;
+
+        enemiesInRange.Add(otherNPC);
+        follower.stopped = true;
+        if (attackRoutine != null) return;
+        attackRoutine = StartCoroutine(AttackEnemiesInRange());
     }
 }

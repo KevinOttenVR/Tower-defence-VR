@@ -297,11 +297,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5078928149966644380}
-  - component: {fileID: 4986524722269950188}
   - component: {fileID: 3974748877432221174}
   - component: {fileID: 2765050468688758551}
   - component: {fileID: 2506236588484946965}
   - component: {fileID: 6219236667406356269}
+  - component: {fileID: 7715160412501790844}
   m_Layer: 8
   m_Name: Enemy_StonerDuck
   m_TagString: Untagged
@@ -326,28 +326,6 @@ Transform:
   - {fileID: 727998873698232209}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &4986524722269950188
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8390619950122398561}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 184f9104abfc9c4419236f1d9cd61d0c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3974748877432221174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: add798eedb4e68e4ba08e15eb7a39e6f, type: 2}
+  follower: {fileID: 2765050468688758551}
   revealMaterial: {fileID: 2100000, guid: 42fd30c6a735bc04ab521412bfe7d2a8, type: 2}
   shaderPropertyName: _Effect_Progress
   effectDuration: 2
@@ -386,6 +365,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 3974748877432221174}
 --- !u!136 &2506236588484946965
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -436,6 +417,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &7715160412501790844
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390619950122398561}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &8813916866509595934
 GameObject:
   m_ObjectHideFlags: 0

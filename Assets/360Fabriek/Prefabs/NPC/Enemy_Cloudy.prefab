@@ -84,11 +84,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3131865782866422572}
-  - component: {fileID: 3116996568730505799}
   - component: {fileID: 4780776163974530235}
   - component: {fileID: 5323665765578940319}
   - component: {fileID: 5455557402394817500}
   - component: {fileID: 4608227747789146046}
+  - component: {fileID: 8409801843690268689}
   m_Layer: 8
   m_Name: Enemy_Cloudy
   m_TagString: Untagged
@@ -113,28 +113,6 @@ Transform:
   - {fileID: 7740895480714110937}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &3116996568730505799
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465368620736061634}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 745e7bedf10448c4786a20d5325d5895, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4780776163974530235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: a232a6ccd41db7648a0c619816af7342, type: 2}
+  follower: {fileID: 5323665765578940319}
   revealMaterial: {fileID: 2100000, guid: 42fd30c6a735bc04ab521412bfe7d2a8, type: 2}
   shaderPropertyName: _Effect_Progress
   effectDuration: 2
@@ -173,6 +152,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 4780776163974530235}
 --- !u!136 &5455557402394817500
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -223,6 +204,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8409801843690268689
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465368620736061634}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &1634561486405687313
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +535,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3131865782866422572}
     m_Modifications:
+    - target: {fileID: 4496611775773940629, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496611775773940629, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4496611775773940629, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4816592950822947595, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -592,6 +606,54 @@ PrefabInstance:
     - target: {fileID: 5304159989664027057, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
       propertyPath: m_Name
       value: Enemy_Cloudy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122034177183208625, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.000014898737
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122034177183208625, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.0000011355286
+      objectReference: {fileID: 0}
+    - target: {fileID: 6122034177183208625, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 98.71688
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729056170296307175, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.0000062496356
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729056170296307175, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000013811963
+      objectReference: {fileID: 0}
+    - target: {fileID: 6729056170296307175, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -34.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874366649692295043, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 2.5639082e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874366649692295043, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 3.637867e-15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874366649692295043, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -105.61662
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137523882764989741, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.0000054881275
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137523882764989741, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -0.000015655663
+      objectReference: {fileID: 0}
+    - target: {fileID: 9137523882764989741, guid: d8af7b326d82fa64bb6ee47fd92fc702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 43.999992
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 4158017592699227390}
   - component: {fileID: 1410980280641500688}
   - component: {fileID: 8389104946347289231}
+  - component: {fileID: -6493393335953666606}
   m_Layer: 8
   m_Name: Enemy_MonsterWithLegs
   m_TagString: Untagged
@@ -237,6 +238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: f4d1116662b6d734ab06751bb4834787, type: 2}
+  follower: {fileID: 4158017592699227390}
   revealMaterial: {fileID: 2100000, guid: 42fd30c6a735bc04ab521412bfe7d2a8, type: 2}
   shaderPropertyName: _Effect_Progress
   effectDuration: 2
@@ -262,6 +264,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 8210508745455845331}
 --- !u!136 &1410980280641500688
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -312,6 +316,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &-6493393335953666606
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3527045732490720798}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &4406011345096101509
 GameObject:
   m_ObjectHideFlags: 0

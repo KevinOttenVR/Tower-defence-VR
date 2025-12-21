@@ -15,23 +15,47 @@ MonoBehaviour:
   towerPrefab: {fileID: 4073010878695629950, guid: 9bfcdd6d72bc4764190f99e4f81cf53d, type: 3}
   projectilePrefab: {fileID: 7301370260018000725, guid: 71061323ebe824d4cb7534279ff62e81, type: 3}
   name: Harold
-  price: 500
+  price: 150
   scale: {x: 1, y: 1, z: 1}
   weaponType: 1
   levels:
   - level: 1
-    upgradePrice: 200
+    upgradePrice: 100
     destroyOrKillPrice: 50
     maxHP: 1000
-    damage: 50
+    damage: 30
     attackSpeed: 4
     range: 0.2
     movementSpeed: 0
   - level: 2
-    upgradePrice: 500
+    upgradePrice: 250
     destroyOrKillPrice: 125
     maxHP: 1400
-    damage: 55
+    damage: 65
     attackSpeed: 4
     range: 0.2
+    movementSpeed: 0
+  - level: 2
+    upgradePrice: 600
+    destroyOrKillPrice: 125
+    maxHP: 1400
+    damage: 140
+    attackSpeed: 4
+    range: 0.2
+    movementSpeed: 0
+  - level: 2
+    upgradePrice: 1400
+    destroyOrKillPrice: 125
+    maxHP: 1400
+    damage: 300
+    attackSpeed: 3.5
+    range: 0.25
+    movementSpeed: 0
+  - level: 2
+    upgradePrice: 0
+    destroyOrKillPrice: 125
+    maxHP: 1400
+    damage: 700
+    attackSpeed: 3
+    range: 0.3
     movementSpeed: 0

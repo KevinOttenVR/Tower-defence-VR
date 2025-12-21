@@ -2470,7 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 909526f7d6d712440a5a82db27b034dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TowerHandHandler
-  towerData: {fileID: 11400000, guid: 7923d72771b6a2847bf265ba1672650a, type: 2}
+  towerData: {fileID: 11400000, guid: b5a7444e486004040ab6b0b272880bcd, type: 2}
   ghostPrefab: {fileID: 6611261495255750858, guid: 5b275e9265f52b042bb9dcf147087f00, type: 3}
   towerController: {fileID: 0}
   mapTag: Ground

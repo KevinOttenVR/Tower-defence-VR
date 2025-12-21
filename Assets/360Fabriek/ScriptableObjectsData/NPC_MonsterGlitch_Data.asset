@@ -31,34 +31,82 @@ MonoBehaviour:
     minWave: 7
   levels:
   - level: 1
-    upgradePrice: 200
-    destroyOrKillPrice: 100
-    maxHP: 100
-    damage: 50
-    attackSpeed: 5
+    upgradePrice: 0
+    destroyOrKillPrice: 10
+    maxHP: 40
+    damage: 5
+    attackSpeed: 1
     range: 3
     movementSpeed: 0.05
-  - level: 2
-    upgradePrice: 500
+  - level: 1
+    upgradePrice: 12
     destroyOrKillPrice: 100
-    maxHP: 200
-    damage: 80
-    attackSpeed: 6
+    maxHP: 70
+    damage: 8
+    attackSpeed: 1
     range: 3
-    movementSpeed: 0.06
-  - level: 3
-    upgradePrice: 500
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 15
+    maxHP: 120
+    damage: 12
+    attackSpeed: 1
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 20
+    maxHP: 200
+    damage: 18
+    attackSpeed: 1.5
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 25
+    maxHP: 350
+    damage: 25
+    attackSpeed: 0.8
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 35
+    maxHP: 600
+    damage: 35
+    attackSpeed: 1.2
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 50
+    maxHP: 1000
+    damage: 50
+    attackSpeed: 1
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 75
+    maxHP: 1800
+    damage: 70
+    attackSpeed: 1
+    range: 3
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
     destroyOrKillPrice: 100
-    maxHP: 200
-    damage: 80
-    attackSpeed: 6
+    maxHP: 3000
+    damage: 100
+    attackSpeed: 1.2
     range: 3
-    movementSpeed: 0.08
-  - level: 4
-    upgradePrice: 500
-    destroyOrKillPrice: 100
-    maxHP: 200
-    damage: 80
-    attackSpeed: 6
+    movementSpeed: 0.05
+  - level: 1
+    upgradePrice: 0
+    destroyOrKillPrice: 500
+    maxHP: 10000
+    damage: 500
+    attackSpeed: 0.5
     range: 3
-    movementSpeed: 0.1
+    movementSpeed: 0.05

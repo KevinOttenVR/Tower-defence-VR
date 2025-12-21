@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class Barracks : MonoBehaviour
 {
@@ -51,7 +52,7 @@ public class Barracks : MonoBehaviour
         PathFollower follower = newUnit.GetComponent<PathFollower>();
         if (follower != null && pathManager != null)
         {
-            follower.Initialize(pathManager.waypoints, npcComponent.movementSpeed);
+            follower.Initialize(pathManager.waypoints.Reverse().ToArray(), npcComponent.movementSpeed);
         }
     }
 }

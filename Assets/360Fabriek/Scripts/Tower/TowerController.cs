@@ -3,6 +3,13 @@ using UnityEngine;
 
 public class TowerController : MonoBehaviour
 {
+    public static TowerController instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void SellTower(TowerData towerData, GameObject tower, int currentLevel)
     {
         int sellPrice = towerData.levels[currentLevel - 1].destroyOrKillPrice;
@@ -45,7 +52,7 @@ public class TowerController : MonoBehaviour
             return;
         }
 
-        int upgradePrice = towerData.levels[currentLevel -1].upgradePrice;
+        int upgradePrice = towerData.levels[currentLevel - 1].upgradePrice;
 
         if (ScoreManager.score >= upgradePrice)
         {

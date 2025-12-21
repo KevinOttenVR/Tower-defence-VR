@@ -1252,6 +1252,7 @@ GameObject:
   - component: {fileID: 6742322454718806355}
   - component: {fileID: 1958632487286158109}
   - component: {fileID: 8745479910306030411}
+  - component: {fileID: 7280384870590261293}
   m_Layer: 8
   m_Name: ToySoldier_01
   m_TagString: Untagged
@@ -1324,7 +1325,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d192280cf3b64f4bb9e9907823d6ea8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
-  Data: {fileID: 11400000, guid: a232a6ccd41db7648a0c619816af7342, type: 2}
+  Data: {fileID: 11400000, guid: 589035908a95c2f4a8bb8a50ab855669, type: 2}
+  follower: {fileID: 6742322454718806355}
   revealMaterial: {fileID: 0}
   shaderPropertyName: 
   effectDuration: 2
@@ -1350,6 +1352,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 8356386535577822933}
 --- !u!136 &1958632487286158109
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1400,6 +1404,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &7280384870590261293
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386275097860912453}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &1423940346606963225
 GameObject:
   m_ObjectHideFlags: 0

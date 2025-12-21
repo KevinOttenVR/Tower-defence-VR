@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: a232a6ccd41db7648a0c619816af7342, type: 2}
+  follower: {fileID: 0}
   revealMaterial: {fileID: 2100000, guid: 42fd30c6a735bc04ab521412bfe7d2a8, type: 2}
   shaderPropertyName: _Effect_Progress
   effectDuration: 2
@@ -173,6 +174,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 4780776163974530235}
 --- !u!136 &5455557402394817500
 CapsuleCollider:
   m_ObjectHideFlags: 0

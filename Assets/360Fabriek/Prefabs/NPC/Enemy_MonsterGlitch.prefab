@@ -209,11 +209,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8691868941503399824}
-  - component: {fileID: 187539023450551182}
   - component: {fileID: 1123581858356688602}
   - component: {fileID: 1696577458914976265}
   - component: {fileID: 8481486583240473046}
   - component: {fileID: 2102271827140735760}
+  - component: {fileID: 6792526374240038603}
   m_Layer: 8
   m_Name: Enemy_MonsterGlitch
   m_TagString: Untagged
@@ -234,32 +234,10 @@ Transform:
   m_LocalScale: {x: 41.21, y: 41.21, z: 41.21}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 7801164910502678527}
+  - {fileID: 6581767962448244518}
   - {fileID: 4552170521808238018}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &187539023450551182
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6619640374692894685}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bc8bfe0efaf57254d844c004919a88dc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1123581858356688602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC
   Data: {fileID: 11400000, guid: c3b1b49e946db5d419dec6add904914a, type: 2}
+  follower: {fileID: 1696577458914976265}
   revealMaterial: {fileID: 2100000, guid: 42fd30c6a735bc04ab521412bfe7d2a8, type: 2}
   shaderPropertyName: _Effect_Progress
   effectDuration: 2
@@ -298,6 +277,8 @@ MonoBehaviour:
   speed: 2
   rotationSpeed: 180
   reachThreshold: 0.01
+  stopped: 0
+  npc: {fileID: 1123581858356688602}
 --- !u!136 &8481486583240473046
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -348,6 +329,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &6792526374240038603
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6619640374692894685}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.15
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &6700030437090689365
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,7 +527,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1001 &7321918056784648866
+--- !u!1001 &5947215091675822715
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -582,8 +584,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3c987b73d159f84787e9246f2a2f2f7, type: 3}
---- !u!4 &7801164910502678527 stripped
+--- !u!4 &6581767962448244518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 711537450910733661, guid: a3c987b73d159f84787e9246f2a2f2f7, type: 3}
-  m_PrefabInstance: {fileID: 7321918056784648866}
+  m_PrefabInstance: {fileID: 5947215091675822715}
   m_PrefabAsset: {fileID: 0}

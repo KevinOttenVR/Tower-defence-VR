@@ -7,9 +7,11 @@ public class PathFollower : MonoBehaviour
     public float rotationSpeed = 10f;
 
     public float reachThreshold = 0.01f;
+    public bool stopped;
 
     private int currentIndex = 0;
     private Animator animator;
+    public NPC npc;
 
     void Awake()
     {
@@ -24,13 +26,21 @@ public class PathFollower : MonoBehaviour
         if (path != null && path.Length > 0)
         {
             currentIndex = 0;
+
+            for(var i = 0; i < waypoints.Length; i++)
+            {
+                var distance = Vector3.Distance(waypoints[i].position, transform.position);
+                if (distance >= Vector3.Distance(waypoints[currentIndex].position, transform.position)) continue;
+                currentIndex = i;
+            }
+
             if (animator != null) animator.SetBool("isWalking", true);
         }
     }
 
     void Update()
     {
-        if (path == null || path.Length == 0 || currentIndex >= path.Length)
+        if (path == null || path.Length == 0 || currentIndex >= path.Length || stopped)
         {
             if (animator != null) animator.SetBool("isWalking", false);
             return;
@@ -69,7 +79,8 @@ public class PathFollower : MonoBehaviour
             if (currentIndex >= path.Length)
             {
                 if (animator != null) animator.SetBool("isWalking", false);
-                // Reached the end
+                npc.Die();
+                if (npc.Data.type == NPCType.enemy) HeadQuartersManager.Instance.TakeDamage(npc.damage);
             }
         }
     }

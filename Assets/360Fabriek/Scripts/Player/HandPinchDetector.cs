@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.XR.Hands; // Requires 'XR Hands' package
+using UnityEngine.XR.Hands;
 using UnityEngine.XR.Management;
 
 public class HandPinchDetector : MonoBehaviour
