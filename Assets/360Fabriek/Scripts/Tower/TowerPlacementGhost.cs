@@ -10,7 +10,6 @@ public class TowerPlacementGhost : MonoBehaviour
     public string mapTag = "Ground";
     public float rotationSmoothness = 10f;
 
-    [Tooltip("Lift the tower up if it looks buried. Try 0.5 or 1.0 depending on scale.")]
     public float placementHeightOffset = 0f;
 
     [Header("Visuals")]
@@ -38,6 +37,8 @@ public class TowerPlacementGhost : MonoBehaviour
 
         if (Physics.Raycast(handPosition + Vector3.up * 0.5f, Vector3.down, out hit, 10f, groundLayer))
         {
+            SetGhostVisible(true);
+
             HandleMapParenting(hit.transform);
 
             transform.position = hit.point + (hit.normal * placementHeightOffset);
@@ -46,7 +47,11 @@ public class TowerPlacementGhost : MonoBehaviour
             if (forward != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(forward, hit.normal);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSmoothness);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    targetRotation,
+                    Time.deltaTime * rotationSmoothness
+                );
             }
 
             Physics.SyncTransforms();
@@ -56,10 +61,11 @@ public class TowerPlacementGhost : MonoBehaviour
         }
         else
         {
+            SetGhostVisible(false);
+
             isValidPosition = false;
             hitParent = null;
             UnparentGhost();
-            SetMaterial(invalidMaterial);
         }
     }
 
@@ -120,5 +126,14 @@ public class TowerPlacementGhost : MonoBehaviour
     private void SetMaterial(Material mat)
     {
         foreach (var r in renderers) r.material = mat;
+    }
+
+    private void SetGhostVisible(bool visible)
+    {
+        foreach (var r in renderers)
+        {
+            if (r != null)
+                r.enabled = visible;
+        }
     }
 }

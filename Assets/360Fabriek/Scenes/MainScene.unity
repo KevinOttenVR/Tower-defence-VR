@@ -2380,6 +2380,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin Hands (XR Rig)
       objectReference: {fileID: 0}
+    - target: {fileID: 3284061654907551981, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: 'towerPrefabs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8545249548633282117, guid: e9bc33a3146deb94a95e2971d5e22257, type: 3}
+    - target: {fileID: 3284061654907551981, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: 'towerPrefabs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3113791512327004827, guid: a224f27c58bcc8449b52d107c5688628, type: 3}
+    - target: {fileID: 3284061654907551981, guid: d6878e1999eb4b44a9f5a263af86c185, type: 3}
+      propertyPath: 'towerPrefabs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 4073010878695629950, guid: f6ea211f891adbe4f8f0bc629afd8224, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

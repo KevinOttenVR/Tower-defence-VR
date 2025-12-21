@@ -2230,6 +2230,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7442956064621211572}
+  - component: {fileID: 6437790546238876427}
+  - component: {fileID: -4591203980362243837}
+  - component: {fileID: 3616978282471388257}
   m_Layer: 0
   m_Name: Ghost_Tower_Shotgun
   m_TagString: Untagged
@@ -2254,6 +2257,89 @@ Transform:
   - {fileID: 4828494273252446962}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6437790546238876427
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355519705016719350}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.15, y: 0.33, z: 0.16}
+  m_Center: {x: 0, y: 0.15, z: 0}
+--- !u!54 &-4591203980362243837
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355519705016719350}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3616978282471388257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355519705016719350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e9f30f0ba024114ca09926e42311b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TowerPlacementGhost
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  mapTag: Ground
+  rotationSmoothness: 10
+  placementHeightOffset: 0
+  renderers:
+  - {fileID: 5704835144839453631}
+  - {fileID: 5519589994987543769}
+  - {fileID: 7084974329385252624}
+  - {fileID: 7261005502417847206}
+  - {fileID: 1384517228496869855}
+  - {fileID: 8293632204059830868}
+  - {fileID: 6806162900244565136}
+  - {fileID: 1091796590373300964}
+  - {fileID: 987258661271843936}
+  validMaterial: {fileID: 2100000, guid: 727f87098255ad04987a60f5f08390bc, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: 55fa12dc7870f1e46b6a7f8617949a86, type: 2}
+  isValidPosition: 0
+  hitParent: {fileID: 0}
 --- !u!1 &3410347907057285299
 GameObject:
   m_ObjectHideFlags: 0
