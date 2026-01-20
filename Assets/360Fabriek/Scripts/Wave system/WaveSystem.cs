@@ -11,9 +11,10 @@ public class WaveSystem : MonoBehaviour
     [Header("Settings")]
     public bool autoStartNextWave = false;
     public Transform levelParent;
+    public bool startOnAwake = true;
 
     private int currentWaveIndex = 0;
-    private bool isWaveActive = false;
+    private bool hasStarted = false;
 
     private void Start()
     {
@@ -23,8 +24,17 @@ public class WaveSystem : MonoBehaviour
             if (mapObj != null) levelParent = mapObj.transform;
         }
 
+        if (startOnAwake)
+            StartWaves();
+    }
+
+    public void StartWaves()
+    {
+        if (hasStarted) return;
+
         if (waveDatabase != null && waveDatabase.waves.Count > 0)
         {
+            hasStarted = true;
             StartCoroutine(LevelRoutine());
         }
     }
@@ -46,8 +56,6 @@ public class WaveSystem : MonoBehaviour
 
     private IEnumerator SpawnWave(WaveData wave)
     {
-        isWaveActive = true;
-
         foreach (var group in wave.enemyGroups)
         {
             for (int i = 0; i < group.count; i++)
@@ -56,8 +64,6 @@ public class WaveSystem : MonoBehaviour
                 yield return new WaitForSeconds(group.timeBetweenSpawns);
             }
         }
-
-        isWaveActive = false;
     }
 
     private void SpawnNPC(NPCData data, int level)

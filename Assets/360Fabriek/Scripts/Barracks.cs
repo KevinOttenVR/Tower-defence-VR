@@ -11,8 +11,10 @@ public class Barracks : MonoBehaviour
 
     [Header("Setup")]
     public Transform spawnPoint;
+    public bool startOnAwake = true;
 
     private PathManager pathManager;
+    private Coroutine spawnRoutine;
 
     private void Start()
     {
@@ -21,7 +23,14 @@ public class Barracks : MonoBehaviour
             pathManager = FindFirstObjectByType<PathManager>();
         }
 
-        StartCoroutine(SpawnRoutine());
+        if (startOnAwake)
+            BeginSpawning();
+    }
+
+    public void BeginSpawning()
+    {
+        if (spawnRoutine != null) return;
+        spawnRoutine = StartCoroutine(SpawnRoutine());
     }
 
     private IEnumerator SpawnRoutine()

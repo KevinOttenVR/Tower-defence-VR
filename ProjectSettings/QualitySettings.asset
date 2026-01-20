@@ -7,7 +7,7 @@ QualitySettings:
   m_CurrentQuality: 0
   m_QualitySettings:
   - serializedVersion: 5
-    name: Mobile
+    name: Quest 3
     pixelLightCount: 2
     shadows: 2
     shadowResolution: 1
@@ -30,7 +30,7 @@ QualitySettings:
     useLegacyDetailDistribution: 1
     adaptiveVsync: 0
     vSyncCount: 0
-    realtimeGICPUUsage: 100
+    realtimeGICPUUsage: 75
     adaptiveVsyncExtraA: 0
     adaptiveVsyncExtraB: 0
     lodBias: 1
@@ -113,8 +113,8 @@ QualitySettings:
     terrainFadeLength: 5
     terrainMaxTrees: 50
     excludedTargetPlatforms:
-    - Android
     - iPhone
+    - Android
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 0
@@ -128,6 +128,7 @@ QualitySettings:
     Server: 0
     Stadia: 0
     Standalone: 1
+    VisionOS: 0
     WebGL: 0
     Windows Store Apps: 0
     XboxOne: 0
